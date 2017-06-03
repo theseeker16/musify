@@ -6,7 +6,7 @@
 //Cargar el mongose
 var mongoose = require('mongoose');
 //Carga el schema
-var schema = mongoose.schema;
+var schema = mongoose.Schema;
 
 var albumSchema = schema({
     name: String,

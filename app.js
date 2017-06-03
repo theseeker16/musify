@@ -29,6 +29,5 @@ app.use('/api', user_routes);
 
 app.get('/pruebas',function (req,res) {
     res.status(200).send({message:"Probando proyecto"});
-
 });
 module.exports = app;

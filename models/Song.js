@@ -5,7 +5,7 @@
 
 //Carga el modulo de mongoose
 var mongoose = require('mongoose');
-var schema = mongoose.schema;
+var schema = mongoose.Schema;
 
 var songSchema = schema({
     number: String,

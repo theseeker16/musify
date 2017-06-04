@@ -51,33 +51,33 @@ function saveUser(req, res) {
 
 }
 
-function loginUser(req,res){
+function loginUser(req, res) {
     var params = req.body;
     var email = params.email;
     var password = params.password;
 
-    User.findOne({email: email.toLowerCase()}, (err,user) =>{
-        if(err){
+    User.findOne({email: email.toLowerCase()}, (err, user) => {
+        if (err) {
             res.status(500).send({message: 'Error en la peticion'});
-        }else{
-            if(!user){
+        } else {
+            if (!user) {
                 res.status(400).send({message: 'El usuario no existe'});
-            }else{
+            } else {
                 //comprobar contraseña
-                bcrypt.compare(password,user.password,function (err,check) {
-                   if(check){
-                       //Devuelve los datos del usuario si el check es correcto
-                       if(params.gethash){
-                           //devolver un token jwt
-                           res.status(200).send({
-                              token: jwt.createToken(user)
-                           });
-                       }else{
-                           res.status(200).send({user})
-                       }
-                   } else{
-                       res.status(400).send({message: 'Contraseña incorrecta'});
-                   }
+                bcrypt.compare(password, user.password, function (err, check) {
+                    if (check) {
+                        //Devuelve los datos del usuario si el check es correcto
+                        if (params.gethash) {
+                            //devolver un token jwt
+                            res.status(200).send({
+                                token: jwt.createToken(user)
+                            });
+                        } else {
+                            res.status(200).send({user})
+                        }
+                    } else {
+                        res.status(400).send({message: 'Contraseña incorrecta'});
+                    }
                 });
 
             }
@@ -86,5 +86,5 @@ function loginUser(req,res){
 }
 
 module.exports = {
-    pruebas, saveUser,loginUser
+    pruebas, saveUser, loginUser
 };

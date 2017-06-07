@@ -4,6 +4,7 @@
 'use strict'
 
 var mongoose = require('mongoose');
+mongoose.Promise = require('bluebird');
 var app = require('./app');
 var port = process.env.PORT || 3977;
 

@@ -14,5 +14,5 @@ module.exports = {
         });
         req.cloudinary = cloudinary;
         next();
-    },
+    }
 }

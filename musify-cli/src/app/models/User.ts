@@ -1,11 +1,10 @@
-export class User{
-  constructor(
-    private _id: string,
-      private name: string,
-      private surname: string,
-      private email: string,
-      private password: string,
-      private role: string,
-      private image: string
-  ){}
+export class User {
+  constructor(public _id: string,
+              public name: string,
+              public surname: string,
+              public email: string,
+              public password: string,
+              public role: string,
+              public image: string) {
+  }
 }

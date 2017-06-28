@@ -15,11 +15,21 @@ export class UserService {
 
   public url: string;
 
-  constructor(private _http: Http) {
+  constructor(private http: Http) {
     this.url = GLOBAL.url;
   }
 
-  signup(){
-   return 'Hola';
+  signup(user,gethash = null){
+    if(gethash != null){
+       user.gethash = gethash;
+    }
+     //convertir a un string el objeto que vamos a recibir
+     let json = JSON.stringify(user);
+     let params = json;
+
+     let headers = new Headers({'Content-Type':'application/json'});
+
+     return this.http.post(this.url+'login',params,{headers: headers})
+       .map(res => res.json());
   }
 }

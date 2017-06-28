@@ -11,6 +11,7 @@ import {UserService} from './services/user.service';
 export class AppComponent implements OnInit{
   public title = 'Musify';
   public user: User;
+  public errorMessage;
   /**
    *   identity comprueba los datos del usuario logeado,
    Van todos los datos dentro de identity, se guarda en el local storage
@@ -26,12 +27,25 @@ export class AppComponent implements OnInit{
 
   //Carga el componente y ejecuta el codigo o instrucciones.
   ngOnInit(){
-    var texto = this._userService.signup();
-    console.log(texto);
   }
 
   public onSubmit() {
+
     console.log(this.user);
+
+    //se subscribe al observable
+    this._userService.signup(this.user).subscribe(
+      response => {
+        console.log(response);
+      },
+      error =>{
+        const errorMessage = <any>error;
+        if(errorMessage != null){
+          this.errorMessage = error;
+          console.log(errorMessage);
+        }
+      }
+    );
   }
 
 }

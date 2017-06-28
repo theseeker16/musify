@@ -35,6 +35,11 @@
 
   <div class="col-lg-6">
     <h1>Sign Up</h1>
+    <div *ngIf="errorMessage">
+      <div class="alert alert-danger">
+        <strong>Error </strong>{{errorMessage}}
+      </div>
+    </div>
     <form #loginForm="ngForm" (ngSubmit)="onSubmit()" class="col-md-7">
       <p>
         <label>Email:</label>
